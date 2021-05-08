@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7225b568ced44b363cc213af6f8db7a8",
+    "content-hash": "3b027dc7399ade82796b3d1de4b0c22a",
     "packages": [
         {
             "name": "griffin/griffin",
