@@ -6,6 +6,11 @@
   "require": {
     "minicli/minicli": "^2.0"
   },
+  "autoload": {
+    "psr-4": {
+      "Griffin\\Cli\\": "src"
+    }
+  },
   "bin": [
     "bin/griffin"
   ]

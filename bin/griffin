@@ -7,8 +7,11 @@ if (php_sapi_name() !== 'cli') {
 
 require __DIR__ . '/../vendor/autoload.php';
 
+use Griffin\Cli\Command;
 use Minicli\App;
 
 $app = new App();
+
+$app->registerCommand('help', new Command\Help());
 
 $app->runCommand($argv);
