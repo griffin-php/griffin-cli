@@ -16,5 +16,10 @@
   },
   "bin": [
     "bin/griffin"
-  ]
+  ],
+  "scripts": {
+    "test": [
+      "phpunit"
+    ]
+  }
 }
