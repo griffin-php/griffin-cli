@@ -14,6 +14,11 @@
       "Griffin\\Cli\\": "src"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "GriffinTest\\Cli\\": "tests"
+    }
+  },
   "bin": [
     "bin/griffin"
   ],
