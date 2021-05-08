@@ -6,6 +6,9 @@
   "require": {
     "minicli/minicli": "^2.0"
   },
+  "require-dev": {
+    "phpunit/phpunit": "~9.5.4"
+  },
   "autoload": {
     "psr-4": {
       "Griffin\\Cli\\": "src"
