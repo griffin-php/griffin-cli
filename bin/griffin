@@ -14,5 +14,6 @@ $app = new App();
 
 $app->setSignature(sprintf('%s help', $argv[0]));
 $app->registerCommand('help', new Command\Help($app));
+$app->registerCommand('plan', new Command\Plan($app));
 
 $app->runCommand($argv);
