@@ -10,6 +10,8 @@ use Griffin\Migration\Container as MigrationContainer;
 use Griffin\Migration\MigrationInterface;
 use GriffinTest\Cli\Migration;
 use PHPUnit\Framework\TestCase;
+use Psr\Container\ContainerInterface;
+use DI\Container;
 
 class LoaderTest extends TestCase
 {
@@ -24,6 +26,17 @@ class LoaderTest extends TestCase
         $this->assertSame($this->harpy, $this->loader->getHarpy());
     }
 
+    public function testPsrContainer(): void
+    {
+        $container = $this->createMock(ContainerInterface::class);
+
+        $this->assertNull($this->loader->getContainer());
+        $this->assertSame($this->loader, $this->loader->setContainer($container));
+        $this->assertSame($container, $this->loader->getContainer());
+        $this->assertSame($this->loader, $this->loader->setContainer(null));
+        $this->assertNull($this->loader->getContainer());
+    }
+
     public function testBasic(): void
     {
         $this->harpy->expects($this->atLeast(1))
@@ -34,7 +47,9 @@ class LoaderTest extends TestCase
                 Migration\Two::class,
             ]));
 
-        $container = $this->loader->load('/path/to/source');
+        $container = $this->loader
+            ->setContainer(new Container())
+            ->load('/path/to/source');
 
         $this->assertInstanceOf(MigrationContainer::class, $container);
         $this->assertCount(2, $container);

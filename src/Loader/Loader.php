@@ -6,6 +6,7 @@ namespace Griffin\Cli\Loader;
 
 use Griffin\Harpy\Harpy;
 use Griffin\Migration\Container as MigrationContainer;
+use Psr\Container\ContainerInterface;
 
 /**
  * Loader
@@ -16,6 +17,11 @@ class Loader
      * Harpy
      */
     protected Harpy $harpy;
+
+    /**
+     * PSR Container
+     */
+    protected ?ContainerInterface $container = null;
 
     /**
      * Construtor
@@ -38,6 +44,29 @@ class Loader
     }
 
     /**
+     * Configure PSR Container
+     *
+     * @param ?ContainerInterface $container PSR Containter
+     * @return Fluent Interface
+     */
+    public function setContainer(?ContainerInterface $container): self
+    {
+        $this->container = $container;
+
+        return $this;
+    }
+
+    /**
+     * Retrieve PSR Container
+     *
+     * @return ?ContainerInterface Expected Object
+     */
+    public function getContainer(): ?ContainerInterface
+    {
+        return $this->container;
+    }
+
+    /**
      * Load
      */
     public function load(string $pattern): MigrationContainer
@@ -47,7 +76,7 @@ class Loader
         $classnames = $this->getHarpy()->search($pattern);
 
         foreach ($classnames as $classname) {
-            $container->addMigration(new $classname);
+            $container->addMigration($this->getContainer()->get($classname));
         }
 
         return $container;
