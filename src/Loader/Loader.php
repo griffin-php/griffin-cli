@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Griffin\Cli\Loader;
 
 use Griffin\Harpy\Harpy;
+use Griffin\Migration\Container as MigrationContainer;
 
 /**
  * Loader
@@ -34,5 +35,21 @@ class Loader
     public function getHarpy(): Harpy
     {
         return $this->harpy;
+    }
+
+    /**
+     * Load
+     */
+    public function load(string $pattern): MigrationContainer
+    {
+        $container = new MigrationContainer();
+
+        $classnames = $this->getHarpy()->search($pattern);
+
+        foreach ($classnames as $classname) {
+            $container->addMigration(new $classname);
+        }
+
+        return $container;
     }
 }
