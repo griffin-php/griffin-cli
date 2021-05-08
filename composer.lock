@@ -4,8 +4,68 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fce6677aa24d329618e5b40c244abb47",
+    "content-hash": "2cbc07b91ad735d21b91c520f66ea23a",
     "packages": [
+        {
+            "name": "griffin/griffin",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/griffin-php/griffin.git",
+                "reference": "c9596c85a39e03effa9bf0e785f43e9c445a823b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/griffin-php/griffin/zipball/c9596c85a39e03effa9bf0e785f43e9c445a823b",
+                "reference": "c9596c85a39e03effa9bf0e785f43e9c445a823b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "psr/event-dispatcher": "1.0.*"
+            },
+            "require-dev": {
+                "league/event": "3.0.*",
+                "php-parallel-lint/php-parallel-lint": "1.3.*",
+                "phpmd/phpmd": "2.9.*",
+                "phpunit/phpunit": "9.5.4",
+                "sebastian/phpcpd": "6.0.*",
+                "slevomat/coding-standard": "7.0.*",
+                "squizlabs/php_codesniffer": "3.6.*"
+            },
+            "suggest": {
+                "griffin/griffin-cli": "Command Line Interface for Griffin"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Griffin\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Griffin is a Graph-Oriented Migration Framework for PHP",
+            "keywords": [
+                "database",
+                "dependencies",
+                "graph",
+                "graph-theory",
+                "migration",
+                "migrations"
+            ],
+            "support": {
+                "issues": "https://github.com/griffin-php/griffin/issues",
+                "source": "https://github.com/griffin-php/griffin/tree/1.0.2"
+            },
+            "time": "2021-04-28T11:43:17+00:00"
+        },
         {
             "name": "griffin/harpy",
             "version": "1.0.0",
@@ -168,6 +228,56 @@
                 "source": "https://github.com/nikic/PHP-Parser/tree/v4.10.5"
             },
             "time": "2021-05-03T19:11:20+00:00"
+        },
+        {
+            "name": "psr/event-dispatcher",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/event-dispatcher.git",
+                "reference": "dbefd12671e8a14ec7f180cab83036ed26714bb0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/event-dispatcher/zipball/dbefd12671e8a14ec7f180cab83036ed26714bb0",
+                "reference": "dbefd12671e8a14ec7f180cab83036ed26714bb0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\EventDispatcher\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Standard interfaces for event handling.",
+            "keywords": [
+                "events",
+                "psr",
+                "psr-14"
+            ],
+            "support": {
+                "issues": "https://github.com/php-fig/event-dispatcher/issues",
+                "source": "https://github.com/php-fig/event-dispatcher/tree/1.0.0"
+            },
+            "time": "2019-01-08T18:20:26+00:00"
         }
     ],
     "packages-dev": [
