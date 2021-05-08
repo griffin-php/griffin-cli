@@ -1,0 +1,7 @@
+{
+  "name": "griffin/griffin-cli",
+  "description": "Command Line Interface for Griffin",
+  "type": "project",
+  "license": "MIT",
+  "require": {}
+}
