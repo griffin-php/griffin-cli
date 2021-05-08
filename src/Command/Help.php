@@ -11,10 +11,7 @@ use Minicli\App;
  */
 class Help
 {
-    /**
-     * App
-     */
-    protected App $app;
+    use AppAwareTrait;
 
     /**
      * Constructor
@@ -23,17 +20,7 @@ class Help
      */
     public function __construct(App $app)
     {
-        $this->app = $app;
-    }
-
-    /**
-     * Retrieve App
-     *
-     * @return App Expected Object
-     */
-    public function getApp(): App
-    {
-        return $this->app;
+        $this->setApp($app);
     }
 
     public function __invoke(): void
