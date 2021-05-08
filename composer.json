@@ -5,5 +5,8 @@
   "license": "MIT",
   "require": {
     "minicli/minicli": "^2.0"
-  }
+  },
+  "bin": [
+    "bin/griffin"
+  ]
 }
