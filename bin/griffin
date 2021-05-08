@@ -12,6 +12,7 @@ use Minicli\App;
 
 $app = new App();
 
+$app->setSignature(sprintf('%s help', $argv[0]));
 $app->registerCommand('help', new Command\Help());
 
 $app->runCommand($argv);
