@@ -3,5 +3,7 @@
   "description": "Command Line Interface for Griffin",
   "type": "project",
   "license": "MIT",
-  "require": {}
+  "require": {
+    "minicli/minicli": "^2.0"
+  }
 }
