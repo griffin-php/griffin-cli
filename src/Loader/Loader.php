@@ -19,18 +19,20 @@ class Loader
     protected Harpy $harpy;
 
     /**
-     * PSR Container
+     * PSR-11 Container
      */
-    protected ?ContainerInterface $container = null;
+    protected ContainerInterface $container;
 
     /**
      * Construtor
      *
      * @param Harpy $harpy Harpy
+     * @param ContainerInterface $container PSR-11 Container
      */
-    public function __construct(Harpy $harpy)
+    public function __construct(Harpy $harpy, ?ContainerInterface $container = null)
     {
         $this->harpy = $harpy;
+        $this->container = $container ?? new Container();
     }
 
     /**
@@ -51,7 +53,7 @@ class Loader
      */
     public function setContainer(?ContainerInterface $container): self
     {
-        $this->container = $container;
+        $this->container = $container ?? new Container();
 
         return $this;
     }
@@ -59,9 +61,9 @@ class Loader
     /**
      * Retrieve PSR Container
      *
-     * @return ?ContainerInterface Expected Object
+     * @return ContainerInterface Expected Object
      */
-    public function getContainer(): ?ContainerInterface
+    public function getContainer(): ContainerInterface
     {
         return $this->container;
     }
