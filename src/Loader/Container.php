@@ -34,6 +34,7 @@ class Container implements ContainerInterface
             throw new Exception(
                 sprintf('Error Found Initializing "%s"', $id),
                 Exception::CLASS_ERROR,
+                $t,
             );
         }
     }
