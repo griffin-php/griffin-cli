@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace GriffinTest\Cli\Loader;
 
 use Griffin\Cli\Loader\Container;
+use GriffinTest\Cli\Migration;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 
@@ -18,5 +19,12 @@ class ContainerTest extends TestCase
     public function testInstanceOf(): void
     {
         $this->assertInstanceOf(ContainerInterface::class, $this->container);
+    }
+
+    public function testHas(): void
+    {
+        $this->assertTrue($this->container->has(Migration\One::class));
+        $this->assertTrue($this->container->has(Migration\Two::class));
+        $this->assertFalse($this->container->has(Migration\Three::class));
     }
 }

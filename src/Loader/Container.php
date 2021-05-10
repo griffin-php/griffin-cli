@@ -8,11 +8,12 @@ use Psr\Container\ContainerInterface;
 
 class Container implements ContainerInterface
 {
-    public function get(string $id)
+    public function get(string $id): mixed
     {
     }
 
-    public function has(string $id)
+    public function has(string $id): bool
     {
+        return class_exists($id);
     }
 }
