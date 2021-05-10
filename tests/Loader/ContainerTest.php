@@ -27,4 +27,10 @@ class ContainerTest extends TestCase
         $this->assertTrue($this->container->has(Migration\Two::class));
         $this->assertFalse($this->container->has(Migration\Three::class));
     }
+
+    public function testGet(): void
+    {
+        $this->assertInstanceOf(Migration\One::class, $this->container->get(Migration\One::class));
+        $this->assertInstanceOf(Migration\Two::class, $this->container->get(Migration\Two::class));
+    }
 }

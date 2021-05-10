@@ -10,6 +10,7 @@ class Container implements ContainerInterface
 {
     public function get(string $id): mixed
     {
+        return new $id();
     }
 
     public function has(string $id): bool
