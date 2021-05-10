@@ -18,7 +18,7 @@ class LoaderTest extends TestCase
     protected function setUp(): void
     {
         $this->harpy     = $this->createMock(Harpy::class);
-        $this->container = $this->createMock(Container::class);
+        $this->container = new Container();
         $this->loader    = new Loader($this->harpy, $this->container);
     }
 
@@ -41,9 +41,6 @@ class LoaderTest extends TestCase
 
     public function testBasic(): void
     {
-        $this->markTestIncomplete();
-        return;
-
         $this->harpy->expects($this->atLeast(1))
             ->method('search')
             ->with('/path/to/source')
@@ -52,13 +49,11 @@ class LoaderTest extends TestCase
                 Migration\Two::class,
             ]));
 
-        $container = $this->loader
-            ->setContainer(new Container())
-            ->load('/path/to/source');
+        $migrations = $this->loader->load('/path/to/source');
 
-        $this->assertInstanceOf(MigrationContainer::class, $container);
-        $this->assertCount(2, $container);
-        $this->assertTrue($container->hasMigration(Migration\One::class));
-        $this->assertTrue($container->hasMigration(Migration\Two::class));
+        $this->assertInstanceOf(MigrationContainer::class, $migrations);
+        $this->assertCount(2, $migrations);
+        $this->assertTrue($migrations->hasMigration(Migration\One::class));
+        $this->assertTrue($migrations->hasMigration(Migration\Two::class));
     }
 }
