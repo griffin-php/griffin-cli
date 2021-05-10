@@ -10,6 +10,13 @@ class Container implements ContainerInterface
 {
     public function get(string $id): mixed
     {
+        if (! $this->has($id)) {
+            throw new Exception(
+                sprintf('Unknown Class "%s"', $id),
+                Exception::CLASS_UNKNOWN,
+            );
+        }
+
         return new $id();
     }
 

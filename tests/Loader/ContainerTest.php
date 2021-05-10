@@ -5,9 +5,11 @@ declare(strict_types=1);
 namespace GriffinTest\Cli\Loader;
 
 use Griffin\Cli\Loader\Container;
+use Griffin\Cli\Loader\Exception;
 use GriffinTest\Cli\Migration;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
+use Psr\Container\NotFoundExceptionInterface;
 
 class ContainerTest extends TestCase
 {
@@ -32,5 +34,15 @@ class ContainerTest extends TestCase
     {
         $this->assertInstanceOf(Migration\One::class, $this->container->get(Migration\One::class));
         $this->assertInstanceOf(Migration\Two::class, $this->container->get(Migration\Two::class));
+    }
+
+    public function testNotFound(): void
+    {
+        $this->expectException(Exception::class);
+        $this->expectException(NotFoundExceptionInterface::class);
+        $this->expectExceptionMessage('Unknown Class "GriffinTest\Cli\Migration\Three"');
+        $this->expectExceptionCode(Exception::CLASS_UNKNOWN);
+
+        $this->container->get(Migration\Three::class);
     }
 }
