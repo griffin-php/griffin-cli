@@ -8,6 +8,7 @@ use Griffin\Cli\Loader\Container;
 use Griffin\Cli\Loader\Exception;
 use GriffinTest\Cli\Migration;
 use PHPUnit\Framework\TestCase;
+use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Container\NotFoundExceptionInterface;
 
@@ -44,5 +45,15 @@ class ContainerTest extends TestCase
         $this->expectExceptionCode(Exception::CLASS_UNKNOWN);
 
         $this->container->get(Migration\Three::class);
+    }
+
+    public function testError(): void
+    {
+        $this->expectException(Exception::class);
+        $this->expectException(ContainerExceptionInterface::class);
+        $this->expectExceptionMessage('Error Found Initializing "GriffinTest\Cli\Migration\Composite"');
+        $this->expectExceptionCode(Exception::CLASS_ERROR);
+
+        $this->container->get(Migration\Composite::class);
     }
 }
