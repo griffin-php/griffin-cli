@@ -32,12 +32,13 @@ class Plan
 
         array_shift($arguments); // bin
         array_shift($arguments); // plan
+        array_shift($arguments); // up|down
 
         $loader  = new Loader();
         $printer = $this->getApp()->getPrinter();
 
         $planner    = new Planner($loader->load(...$arguments));
-        $migrations = $planner->up();
+        $migrations = $call->subcommand === 'up' ? $planner->up() : $planner->down();
 
         foreach ($migrations as $migration) {
             $printer->rawOutput($migration->getName() . "\n");
