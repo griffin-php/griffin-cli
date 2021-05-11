@@ -40,7 +40,7 @@ class Loader
      * Configure Harpy
      *
      * @param ?Harpy $harpy Harpy
-     * @return Fluent Interface
+     * @return Loader Fluent Interface
      */
     public function setHarpy(?Harpy $harpy): self
     {
@@ -63,7 +63,7 @@ class Loader
      * Configure PSR-11 Container
      *
      * @param ?ContainerInterface $container PSR Containter
-     * @return Fluent Interface
+     * @return Loader Fluent Interface
      */
     public function setContainer(?ContainerInterface $container): self
     {
@@ -84,6 +84,9 @@ class Loader
 
     /**
      * Load
+     *
+     * @param string $pattern Search Pattern
+     * @return MigrationContainer Expected Object
      */
     public function load(string $pattern): MigrationContainer
     {
