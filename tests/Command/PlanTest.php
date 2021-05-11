@@ -7,13 +7,14 @@ namespace GriffinTest\Cli\Command;
 use Griffin\Cli\Command\Plan;
 use Minicli\App;
 use Minicli\Command\CommandCall;
+use Minicli\Output\OutputHandler;
 use PHPUnit\Framework\TestCase;
 
 class PlanTest extends TestCase
 {
     protected function setUp(): void
     {
-        $this->app = $this->createMock(App::class);
+        $this->app = new App();
 
         $this->command = new Plan($this->app);
     }
@@ -25,7 +26,19 @@ class PlanTest extends TestCase
 
     public function testInvokable(): void
     {
-        $arguments = new CommandCall(['griffin', 'plan', 'pattern=' . __DIR__ . '/../Migration']);
+        $this->expectOutputString(<<<EOS
+GriffinTest\Cli\Migration\One
+GriffinTest\Cli\Migration\Two
+
+EOS
+        );
+
+        $arguments = new CommandCall([
+            'bin',
+            'plan',
+            __DIR__ . '/../Migration/One.php',
+            __DIR__ . '/../Migration/Two.php',
+        ]);
 
         ($this->command)($arguments);
     }
