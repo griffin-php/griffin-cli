@@ -6,6 +6,7 @@ namespace GriffinTest\Cli\Command;
 
 use Griffin\Cli\Command\Plan;
 use Minicli\App;
+use Minicli\Command\CommandCall;
 use PHPUnit\Framework\TestCase;
 
 class PlanTest extends TestCase
@@ -20,5 +21,12 @@ class PlanTest extends TestCase
     public function testConstructor(): void
     {
         $this->assertSame($this->app, $this->command->getApp());
+    }
+
+    public function testInvokable(): void
+    {
+        $arguments = new CommandCall(['griffin', 'plan', 'pattern=' . __DIR__ . '/../Migration']);
+
+        ($this->command)($arguments);
     }
 }

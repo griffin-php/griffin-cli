@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Griffin\Cli\Command;
 
+use Griffin\Cli\Loader\Loader;
 use Minicli\App;
+use Minicli\Command\CommandCall;
 
 /**
  * Plan Command
@@ -23,7 +25,8 @@ class Plan
         $this->setApp($app);
     }
 
-    public function __invoke(): void
+    public function __invoke(CommandCall $arguments): void
     {
+        $pattern = $arguments->getParam('pattern');
     }
 }
