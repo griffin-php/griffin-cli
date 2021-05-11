@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Griffin\Cli\Command;
 
 use Griffin\Cli\Loader\Loader;
+use Griffin\Planner\Planner;
 use Minicli\App;
 use Minicli\Command\CommandCall;
 
@@ -35,7 +36,8 @@ class Plan
         $loader  = new Loader();
         $printer = $this->getApp()->getPrinter();
 
-        $migrations = $loader->load(...$arguments);
+        $planner    = new Planner($loader->load(...$arguments));
+        $migrations = $planner->up();
 
         foreach ($migrations as $migration) {
             $printer->rawOutput($migration->getName() . "\n");

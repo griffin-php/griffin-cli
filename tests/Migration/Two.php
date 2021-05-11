@@ -15,7 +15,9 @@ class Two implements MigrationInterface
 
     public function getDependencies(): array
     {
-        return [];
+        return [
+            One::class,
+        ];
     }
 
     public function assert(): bool

@@ -36,8 +36,8 @@ EOS
         $arguments = new CommandCall([
             'bin',
             'plan',
-            __DIR__ . '/../Migration/One.php',
             __DIR__ . '/../Migration/Two.php',
+            __DIR__ . '/../Migration/One.php',
         ]);
 
         ($this->command)($arguments);
