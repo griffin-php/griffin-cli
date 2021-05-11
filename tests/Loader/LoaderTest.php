@@ -54,13 +54,13 @@ class LoaderTest extends TestCase
     {
         $this->harpy->expects($this->atLeast(1))
             ->method('search')
-            ->with('/path/to/source')
+            ->with('/path/to/source', '/path/to/another/source')
             ->will($this->returnValue([
                 Migration\One::class,
                 Migration\Two::class,
             ]));
 
-        $migrations = $this->loader->load('/path/to/source');
+        $migrations = $this->loader->load('/path/to/source', '/path/to/another/source');
 
         $this->assertInstanceOf(MigrationContainer::class, $migrations);
         $this->assertCount(2, $migrations);

@@ -86,13 +86,16 @@ class Loader
      * Load
      *
      * @param string $pattern Search Pattern
+     * @param string ...$patterns Additional Search Patterns
      * @return MigrationContainer Expected Object
      */
-    public function load(string $pattern): MigrationContainer
+    public function load(string $pattern, string ...$patterns): MigrationContainer
     {
-        $container = new MigrationContainer();
+        array_unshift($patterns, $pattern);
 
-        $classnames = $this->getHarpy()->search($pattern);
+        $classnames = $this->getHarpy()->search(...$patterns);
+
+        $container = new MigrationContainer();
 
         foreach ($classnames as $classname) {
             $container->addMigration($this->getContainer()->get($classname));
