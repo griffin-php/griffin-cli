@@ -28,6 +28,17 @@ class LoaderTest extends TestCase
         $this->assertSame($this->container, $this->loader->getContainer());
     }
 
+    public function testHarpy(): void
+    {
+        $harpy = $this->createMock(Harpy::class);
+
+        $this->assertInstanceOf(Harpy::class, $this->loader->getHarpy());
+        $this->assertSame($this->loader, $this->loader->setHarpy($harpy));
+        $this->assertSame($harpy, $this->loader->getHarpy());
+        $this->assertSame($this->loader, $this->loader->setHarpy(null));
+        $this->assertInstanceOf(Harpy::class, $this->loader->getHarpy());
+    }
+
     public function testPsrContainer(): void
     {
         $container = $this->createMock(ContainerInterface::class);
