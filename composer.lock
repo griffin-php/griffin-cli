@@ -68,16 +68,16 @@
         },
         {
             "name": "griffin/harpy",
-            "version": "1.0.0",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/griffin-php/harpy.git",
-                "reference": "31a69669ec4ac3fb11cdc9221273ad6f9c105f41"
+                "reference": "95bbb5f74a140e3c830b4c27f54dd9b589d6a58b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/griffin-php/harpy/zipball/31a69669ec4ac3fb11cdc9221273ad6f9c105f41",
-                "reference": "31a69669ec4ac3fb11cdc9221273ad6f9c105f41",
+                "url": "https://api.github.com/repos/griffin-php/harpy/zipball/95bbb5f74a140e3c830b4c27f54dd9b589d6a58b",
+                "reference": "95bbb5f74a140e3c830b4c27f54dd9b589d6a58b",
                 "shasum": ""
             },
             "require": {
@@ -117,22 +117,22 @@
             ],
             "support": {
                 "issues": "https://github.com/griffin-php/harpy/issues",
-                "source": "https://github.com/griffin-php/harpy/tree/1.0.0"
+                "source": "https://github.com/griffin-php/harpy/tree/1.0.2"
             },
-            "time": "2021-05-08T18:40:12+00:00"
+            "time": "2021-05-11T16:23:23+00:00"
         },
         {
             "name": "minicli/minicli",
-            "version": "2.2.0",
+            "version": "2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/minicli/minicli.git",
-                "reference": "6ba44bf3d27cb062a499a0d0d4368e13db17837a"
+                "reference": "b359a740b7dc258acaf52d4373cac5f545705b33"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/minicli/minicli/zipball/6ba44bf3d27cb062a499a0d0d4368e13db17837a",
-                "reference": "6ba44bf3d27cb062a499a0d0d4368e13db17837a",
+                "url": "https://api.github.com/repos/minicli/minicli/zipball/b359a740b7dc258acaf52d4373cac5f545705b33",
+                "reference": "b359a740b7dc258acaf52d4373cac5f545705b33",
                 "shasum": ""
             },
             "require": {
@@ -163,7 +163,7 @@
             ],
             "support": {
                 "issues": "https://github.com/minicli/minicli/issues",
-                "source": "https://github.com/minicli/minicli/tree/2.2.0"
+                "source": "https://github.com/minicli/minicli/tree/2.2.1"
             },
             "funding": [
                 {
@@ -171,7 +171,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-03-04T16:39:23+00:00"
+            "time": "2021-05-08T15:36:01+00:00"
         },
         {
             "name": "nikic/php-parser",
