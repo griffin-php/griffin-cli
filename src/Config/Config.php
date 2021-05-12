@@ -23,6 +23,15 @@ class Config
      */
     public function setPatterns(array $patterns): self
     {
+        foreach ($patterns as $pattern) {
+            if (! is_string($pattern)) {
+                throw new Exception(
+                    sprintf('Invalid Pattern "%s" Type: "%s"', $pattern, gettype($pattern)),
+                    Exception::PATTERN_INVALID_TYPE,
+                );
+            }
+        }
+
         $this->patterns = $patterns;
 
         return $this;
