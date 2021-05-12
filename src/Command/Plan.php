@@ -60,14 +60,14 @@ class Plan
 
     public function __invoke(CommandCall $call): void
     {
-        $arguments = $call->args;
-
-        array_shift($arguments); // bin
-        array_shift($arguments); // plan
-        array_shift($arguments); // up|down
-
         $loader  = new Loader();
         $printer = $this->getApp()->getPrinter();
+
+        $patterns = $this->getConfig()->getPatterns();
+
+        if (! $patterns) {
+            return;
+        }
 
         $planner    = new Planner($loader->load(...$this->getConfig()->getPatterns()));
         $migrations = $call->subcommand === 'up' ? $planner->up() : $planner->down();

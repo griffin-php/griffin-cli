@@ -8,12 +8,14 @@ if (php_sapi_name() !== 'cli') {
 require __DIR__ . '/../vendor/autoload.php';
 
 use Griffin\Cli\Command;
+use Griffin\Cli\Config\Config;
 use Minicli\App;
 
-$app = new App();
+$app    = new App();
+$config = new Config();
 
 $app->setSignature(sprintf('%s help', $argv[0]));
-$app->registerCommand('help', new Command\Help($app));
-$app->registerCommand('plan', new Command\Plan($app));
+$app->registerCommand('help', new Command\Help($app, $config));
+$app->registerCommand('plan', new Command\Plan($app, $config));
 
 $app->runCommand($argv);

@@ -44,6 +44,13 @@ EOS
         ($this->command)(new CommandCall(['bin', 'plan', 'up']));
     }
 
+    public function testUpWithoutPattern(): void
+    {
+        $this->expectOutputString('');
+
+        ($this->command)(new CommandCall(['bin', 'plan', 'up']));
+    }
+
     public function testDown(): void
     {
         $this->expectOutputString(<<<EOS
@@ -57,6 +64,13 @@ EOS
             __DIR__ . '/../Migration/One.php',
             __DIR__ . '/../Migration/Two.php',
         ]);
+
+        ($this->command)(new CommandCall(['bin', 'plan', 'down']));
+    }
+
+    public function testDownWithoutPattern(): void
+    {
+        $this->expectOutputString('');
 
         ($this->command)(new CommandCall(['bin', 'plan', 'down']));
     }
