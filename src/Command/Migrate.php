@@ -43,7 +43,7 @@ class Migrate
             return;
         }
 
-        $planner    = new Planner($loader->load(...$this->getConfig()->getPatterns()));
+        $planner    = new Planner($loader->load(...$patterns));
         $migrations = $call->command === 'up' ? $planner->up() : $planner->down();
 
         foreach ($migrations as $migration) {
