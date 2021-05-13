@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Griffin\Cli\Command;
 
 use Griffin\Cli\Config\Config;
+use Griffin\Cli\Config\ConfigAwareTrait;
 use Griffin\Cli\Loader\Loader;
 use Griffin\Planner\Planner;
 use Minicli\App;
@@ -16,11 +17,7 @@ use Minicli\Command\CommandCall;
 class Plan
 {
     use AppAwareTrait;
-
-    /**
-     * Config
-     */
-    protected Config $config;
+    use ConfigAwareTrait;
 
     /**
      * Constructor
@@ -33,29 +30,6 @@ class Plan
         $this
             ->setApp($app)
             ->setConfig($config);
-    }
-
-    /**
-     * Configure Config
-     *
-     * @param Config $config Config
-     * @return Plan Fluent Interface
-     */
-    public function setConfig(Config $config): self
-    {
-        $this->config = $config;
-
-        return $this;
-    }
-
-    /**
-     * Retrieve Config
-     *
-     * @return Config Expected Object
-     */
-    public function getConfig(): Config
-    {
-        return $this->config;
     }
 
     public function __invoke(CommandCall $call): void
