@@ -4,21 +4,21 @@ declare(strict_types=1);
 
 namespace GriffinTest\Cli\Command;
 
-use Griffin\Cli\Command\Plan;
+use Griffin\Cli\Command\Migrate;
 use Griffin\Cli\Config\Config;
 use Minicli\App;
 use Minicli\Command\CommandCall;
 use Minicli\Output\OutputHandler;
 use PHPUnit\Framework\TestCase;
 
-class PlanTest extends TestCase
+class MigrateTest extends TestCase
 {
     protected function setUp(): void
     {
         $this->app    = new App();
         $this->config = new Config();
 
-        $this->command = new Plan($this->app, $this->config);
+        $this->command = new Migrate($this->app, $this->config);
     }
 
     public function testConstructor(): void
@@ -41,14 +41,14 @@ EOS
             __DIR__ . '/../Migration/One.php',
         ]);
 
-        ($this->command)(new CommandCall(['bin', 'plan', 'up']));
+        ($this->command)(new CommandCall(['bin', 'up']));
     }
 
     public function testUpWithoutPattern(): void
     {
         $this->expectOutputString('');
 
-        ($this->command)(new CommandCall(['bin', 'plan', 'up']));
+        ($this->command)(new CommandCall(['bin', 'up']));
     }
 
     public function testDown(): void
@@ -65,13 +65,13 @@ EOS
             __DIR__ . '/../Migration/Two.php',
         ]);
 
-        ($this->command)(new CommandCall(['bin', 'plan', 'down']));
+        ($this->command)(new CommandCall(['bin', 'down']));
     }
 
     public function testDownWithoutPattern(): void
     {
         $this->expectOutputString('');
 
-        ($this->command)(new CommandCall(['bin', 'plan', 'down']));
+        ($this->command)(new CommandCall(['bin', 'down']));
     }
 }

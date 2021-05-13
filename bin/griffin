@@ -16,6 +16,7 @@ $config = new Config();
 
 $app->setSignature(sprintf('%s help', $argv[0]));
 $app->registerCommand('help', new Command\Help($app, $config));
-$app->registerCommand('plan', new Command\Plan($app, $config));
+$app->registerCommand('up', new Command\Migrate($app, $config));
+$app->registerCommand('down', new Command\Migrate($app, $config));
 
 $app->runCommand($argv);

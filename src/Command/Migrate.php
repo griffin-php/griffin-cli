@@ -12,9 +12,9 @@ use Minicli\App;
 use Minicli\Command\CommandCall;
 
 /**
- * Plan Command
+ * Migrate Command
  */
-class Plan
+class Migrate
 {
     use AppAwareTrait;
     use ConfigAwareTrait;
@@ -44,7 +44,7 @@ class Plan
         }
 
         $planner    = new Planner($loader->load(...$this->getConfig()->getPatterns()));
-        $migrations = $call->subcommand === 'up' ? $planner->up() : $planner->down();
+        $migrations = $call->command === 'up' ? $planner->up() : $planner->down();
 
         foreach ($migrations as $migration) {
             $printer->rawOutput($migration->getName() . "\n");
