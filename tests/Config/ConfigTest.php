@@ -32,4 +32,15 @@ class ConfigTest extends TestCase
 
         $this->config->setPatterns([1, 2]);
     }
+
+    public function testLoadFromFile(): void
+    {
+        $this->assertSame($this->config, $this->config->loadFromFile(__DIR__ . '/../Migration/config.xml'));
+
+        $patterns = $this->config->getPatterns();
+
+        $this->assertCount(2, $patterns);
+        $this->assertContains('./One.php', $patterns);
+        $this->assertContains('./Two.php', $patterns);
+    }
 }
