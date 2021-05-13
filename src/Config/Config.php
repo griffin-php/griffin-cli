@@ -57,10 +57,12 @@ class Config
     {
         $xml = simplexml_load_file($filename);
 
-        $pattern = (string) $xml->pattern;
-        $pattern = dirname($filename) . DIRECTORY_SEPARATOR . $pattern;
+        $patterns = [];
+        foreach ($xml->pattern as $pattern) {
+            $patterns[] = dirname($filename) . DIRECTORY_SEPARATOR . ((string) $pattern);
+        }
 
-        $this->setPatterns([$pattern]);
+        $this->setPatterns($patterns);
 
         return $this;
     }

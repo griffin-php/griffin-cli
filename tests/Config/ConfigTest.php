@@ -39,8 +39,8 @@ class ConfigTest extends TestCase
 
         $patterns = $this->config->getPatterns();
 
-        $this->assertCount(1, $patterns);
+        $this->assertCount(2, $patterns);
         $this->assertContains(__DIR__ . '/../Migration/One.php', $patterns);
-        // $this->assertContains(__DIR__ . '/../Migration/Two.php', $patterns);
+        $this->assertContains(__DIR__ . '/../Migration/Two.php', $patterns);
     }
 }
