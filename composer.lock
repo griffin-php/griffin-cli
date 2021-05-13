@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3073eb659ec5a6739c68686838649781",
+    "content-hash": "c8da60bcd1a5792369ef440ef3db1d54",
     "packages": [
         {
             "name": "griffin/griffin",
@@ -2371,7 +2371,8 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=8.0"
+        "php": ">=8.0",
+        "ext-xml": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "2.0.0"
