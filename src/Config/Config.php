@@ -46,4 +46,22 @@ class Config
     {
         return $this->patterns;
     }
+
+    /**
+     * Load Config using XML
+     *
+     * @param string $filename File
+     * @return Config Fluent Interface
+     */
+    public function loadFromFile(string $filename): self
+    {
+        $xml = simplexml_load_file($filename);
+
+        $pattern = (string) $xml->pattern;
+        $pattern = dirname($filename) . DIRECTORY_SEPARATOR . $pattern;
+
+        $this->setPatterns([$pattern]);
+
+        return $this;
+    }
 }
